@@ -114,4 +114,7 @@ public class Group {
         this.maxCapacity = maxCapacity;
     }
 
+
+    // BUSINESS LOGIC
+    // -- TO DO --
 }
