@@ -6,7 +6,7 @@ public class Group {
     private Long id;
     private String courseTopic;
     private LocalDateTime meetingDateTime;
-    private String location;
+    private String venue;
     private int maxCapacity;
     private Long organizerId;
     private Long clubId;
@@ -16,7 +16,7 @@ public class Group {
     public Group(
             String courseTopic,
             LocalDateTime meetingDateTime,
-            String location,
+            String venue,
             int maxCapacity,
             Long organizerId,
             Long clubId,
@@ -35,7 +35,7 @@ public class Group {
         CANCELLED
     }
 
-    
+
     // GETTERS
 
     public Long getId() {
@@ -50,8 +50,8 @@ public class Group {
         return meetingDateTime;
     }
 
-    public String getLocation() {
-        return location;
+    public String getVenue() {
+        return venue;
     }
 
     public int getMaxCapacity() {
@@ -68,6 +68,50 @@ public class Group {
 
     public GroupStatus getStatus() {
         return status;
+    }
+
+    
+    // SETTERS
+
+     public void setId(Long id) {
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException(
+                    "Group ID must be positive");
+        }
+
+        this.id = id;
+    }
+
+    public void setCourseTopic(String courseTopic) {
+        if (courseTopic == null || courseTopic.isBlank()) {
+            throw new IllegalArgumentException(
+                    "Course topic cannot be empty");
+        }
+
+        this.courseTopic = courseTopic;
+    }
+
+    public void setMeetingDateTime(LocalDateTime meetingDateTime) {
+        this.meetingDateTime = Objects.requireNonNull(
+                meetingDateTime, "Meeting date and time cannot be null");
+    }
+
+    public void setLocation(String venue) {
+        if (venue == null || venue.isBlank()) {
+            throw new IllegalArgumentException(
+                    "Venue cannot be empty");
+        }
+
+        this.venue = venue;
+    }
+
+    public void setMaxCapacity(int maxCapacity) {
+        if (maxCapacity <= 0) {
+            throw new IllegalArgumentException(
+                    "Maximum capacity must be greater than zero");
+        }
+
+        this.maxCapacity = maxCapacity;
     }
 
 }
